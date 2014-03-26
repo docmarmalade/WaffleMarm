@@ -1,0 +1,7 @@
+name:  WaffleMarm
+main:  com.marmalade.wafflemarm.WaffleMarm
+version:  1.0
+commands:
+  HI:
+      description: This command will display "Hi <player>!" 
+     
