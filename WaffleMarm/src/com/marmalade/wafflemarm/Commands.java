@@ -21,24 +21,15 @@ public class Commands implements CommandExecutor{
 		if (label.equalsIgnoreCase("chat")) {
         	if(args.length == 1){
         		plugin.chat.put(player.getName(), args[0].toLowerCase());
-        } //end if
-        else {
+              } //end if
+            else {
         	plugin.chat.put(player.getName(), "default");
-        } //end else
+              } //end else
 		} //end if label
-        return true;
-    	
-        if(cmd.getName().equalsIgnoreCase("hi")){
-    		if(sender instanceof Player){
-    			String displayName = sender.getName();
-    			sender.sendMessage("Hi " + displayName + "!");
-    		return true;
-    		}
-    			else{
-    				sender.sendMessage("You must be a player to use this command.");
-    			}
-    		return false;
-        }
+		return true;
+	}
+}
+        
         
        
         
