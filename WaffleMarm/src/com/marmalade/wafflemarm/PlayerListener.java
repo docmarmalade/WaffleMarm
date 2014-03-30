@@ -1,10 +1,13 @@
 package com.marmalade.wafflemarm;
 
+import java.util.logging.Logger;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+
 import com.marmalade.wafflemarm.WaffleMarm;
 
 public final class PlayerListener implements Listener {
@@ -16,12 +19,13 @@ public final class PlayerListener implements Listener {
 	}
 
 	@EventHandler(priority = EventPriority.NORMAL)
-	public void onPlayerChat(AsyncPlayerChatEvent event) {
-
+	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
+		final Logger log = Logger.getLogger("Minecraft");
 		Player player = event.getPlayer();
 		
 		if (event.getMessage().startsWith("/bye")){
 			player.sendMessage("Goodbye");
+			event.setCancelled(true);
 		}
 
 	}

@@ -9,7 +9,7 @@ public final class WaffleMarm extends JavaPlugin {
 
 	public static WaffleMarm plugin;
 	public final Logger log = Logger.getLogger("Minecraft");
-	private final PlayerListener PlayerListener = new PlayerListener(this);
+	private final PlayerListener playerListener = new PlayerListener(this);
 	public WaffleMarm() {
 		plugin = this;
 	}
@@ -18,7 +18,7 @@ public final class WaffleMarm extends JavaPlugin {
 	public void onEnable(){
 		getLogger().info("It's Alive!!");
 		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(PlayerListener, this);
+		pm.registerEvents(playerListener, this);
 	}
 }
 
