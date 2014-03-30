@@ -21,6 +21,7 @@ public final class PlayerListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
 		final Logger log = Logger.getLogger("Minecraft");
+		log.info(event.getMessage());
 		Player player = event.getPlayer();
 		
 		if (event.getMessage().startsWith("/bye")){
