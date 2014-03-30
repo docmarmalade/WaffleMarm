@@ -1,7 +1,5 @@
 package com.marmalade.wafflemarm;
 
-import java.util.logging.Logger;
-
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -20,8 +18,7 @@ public final class PlayerListener implements Listener {
 
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
-		final Logger log = Logger.getLogger("Minecraft");
-		log.info(event.getMessage());
+		
 		Player player = event.getPlayer();
 		
 		if (event.getMessage().startsWith("/bye")){

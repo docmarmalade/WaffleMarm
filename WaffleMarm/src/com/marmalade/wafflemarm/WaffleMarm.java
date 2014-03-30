@@ -20,6 +20,7 @@ public final class WaffleMarm extends JavaPlugin {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(playerListener, this);
 		getCommand("hi").setExecutor(new Commands(this));
+		getCommand("jump").setExecutor(new Commands(this));
 	}
 }
 
