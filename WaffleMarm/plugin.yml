@@ -4,5 +4,4 @@ version:  1.0
 commands:
   hi:
     description: Displays "HI <player>!" 
-  chat:
-    description: Changes Your Chat Channel.    
+    
