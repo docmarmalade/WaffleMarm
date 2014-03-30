@@ -1,7 +1,7 @@
 package com.marmalade.wafflemarm;
 
 import java.util.logging.Logger;
-
+import com.marmalade.wafflemarm.PlayerListener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 

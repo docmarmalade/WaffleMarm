@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import com.marmalade.wafflemarm.WaffleMarm;
 
 public final class PlayerListener implements Listener {
 
