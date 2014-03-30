@@ -6,12 +6,12 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-public final class ChatListener implements Listener {
+public final class PlayerListener implements Listener {
 
 	final WaffleMarm plugin;
 	
-	public ChatListener(WaffleMarm plugin){
-		this.plugin = plugin;
+	public PlayerListener(WaffleMarm instance) {
+		plugin = instance;
 	}
 
 	@EventHandler(priority = EventPriority.NORMAL)
@@ -20,7 +20,6 @@ public final class ChatListener implements Listener {
 		Player player = event.getPlayer();
 		
 		if (event.getMessage().startsWith("/bye")){
-			if(event.isCancelled()) return;
 			player.sendMessage("Goodbye");
 		}
 
