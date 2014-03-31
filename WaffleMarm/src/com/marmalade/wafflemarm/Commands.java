@@ -20,6 +20,7 @@ public class Commands implements CommandExecutor{
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 
 		String displayName = sender.getName();
+		Player player = (Player) sender;
 
 		if(cmd.getName().equalsIgnoreCase("hi")){	
 			if(sender instanceof Player){
@@ -32,7 +33,7 @@ public class Commands implements CommandExecutor{
 		} //end if
 	
 		if(cmd.getName().equalsIgnoreCase("jump")){
-			Player player = (Player) sender;
+			
 			double x = player.getLocation().getX(); 
 			double y = player.getLocation().getY();
 			double z = player.getLocation().getZ();
@@ -42,7 +43,7 @@ public class Commands implements CommandExecutor{
 			player.teleport(location);
 			player.sendMessage(ChatColor.YELLOW + "What goes up...Must come down!");
 			return true;
-
+			
 		}
 		return false;
 	}
