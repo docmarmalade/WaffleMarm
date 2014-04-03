@@ -8,11 +8,4 @@ commands:
     description: Teleports the player +20 blocks on the y-axis.
   desert:
     description: Changes all generated chunks to desert biome.
-permissions"
-    biome.*:
-        description: Gives access to all biome commands.
-        children:
-            biome.desert = op
-    biome.desert:
-        description: Allows op to change biome to desert.
-        default: op         
+        
