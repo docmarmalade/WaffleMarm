@@ -26,7 +26,6 @@ public final class WaffleMarm extends JavaPlugin {
 		
 		getCommand("hi").setExecutor(new Commands(this));
 		getCommand("jump").setExecutor(new Commands(this));
-		getCommand("desert").setExecutor(new Commands(this));
 		
 	}
 }

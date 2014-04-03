@@ -6,6 +6,5 @@ commands:
     description: Displays "HI <player>!" 
   jump:
     description: Teleports the player +20 blocks on the y-axis.
-  desert:
-    description: Changes all generated chunks to desert biome.
+ 
         

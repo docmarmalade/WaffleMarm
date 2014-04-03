@@ -1,5 +1,7 @@
 package com.marmalade.wafflemarm;
 
+import java.util.Random;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
@@ -10,7 +12,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 public class Commands implements CommandExecutor{
 
@@ -48,25 +50,33 @@ public class Commands implements CommandExecutor{
 			player.sendMessage(ChatColor.YELLOW + "What goes up...Must come down!");
 			return true;
 		}
-
-		if(player.isOp()){
-			if(cmd.getName().equalsIgnoreCase("desert")){
-				Chunk[] c = player.getWorld().getLoadedChunks();
-				int chunkCount = 1; // init. chunk index
-				for(int i = 0; i < c.length; i++){	
-					if(i > 0){
-						chunkCount++;
-
-
-		
-					} else{player.sendMessage("Player must be op to use this command");
-					}
-				}
-			}
-		}
 		return false;
 	}
+	
+	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
+		Player player = event.getPlayer();
+		String command = event.getMessage();
+		if(player.isOp()){
+			if (command.startsWith("/desert")) {
+				player.sendMessage("I shall bring you the desert..");
+				int count = 0;
+				for (Chunk chunk : player.getWorld().getLoadedChunks()) {
+					for (int x = 0; x < 16; x = x + 1) {
+						for (int z = 0; z < 16; z = z + 1) {
+							Block block = chunk.getBlock(x, 0, z);
+							int pick = new Random().nextInt(Biome.values().length);
+							Biome biome = Biome.values()[pick];
+							block.setBiome(biome);
+						}
+					}
+					count++;
+				} 
+				player.sendMessage("Chunks Enhanced: " + count);
+			}
+		}
+	}
 }
+
 
 
 
