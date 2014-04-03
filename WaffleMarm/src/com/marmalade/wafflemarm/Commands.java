@@ -54,17 +54,23 @@ public class Commands implements CommandExecutor{
 				Chunk[] c = player.getWorld().getLoadedChunks();
 				int chunkCount = 1; // init. chunk index
 				for(int i = 0; i < c.length; i++){	
-						chunkCount++;	
-						
-							
-				} else{player.sendMessage("Player must be op to use this command");
+					if(i > 0){
+						chunkCount++;
+
+
+		
+					} else{player.sendMessage("Player must be op to use this command");
 					}
 				}
 			}
-	
+		}
+		return false;
+	}
+}
 
-	
-			
+
+
+
 
 
 
