@@ -29,8 +29,8 @@ public class Commands implements CommandExecutor{
 			}
 			else{
 				sender.sendMessage("You must be a player to use this command.");
-			} //end else
-		} //end if
+			} 
+		} 
 
 		if(cmd.getName().equalsIgnoreCase("jump")){
 

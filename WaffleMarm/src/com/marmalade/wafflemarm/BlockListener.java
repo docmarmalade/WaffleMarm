@@ -20,8 +20,8 @@ import org.bukkit.event.block.BlockPlaceEvent;
 			Player player = event.getPlayer();
 			
 			event.setCancelled(true);
-				player.setHealth(0.0);
-				player.sendMessage("Hahaha you fool.");
+				player.setHealth(0.0);   //kills player when block is placed
+				player.sendMessage("Hahaha you fool."); 
 			}
 
 		}
