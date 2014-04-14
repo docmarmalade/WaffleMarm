@@ -25,7 +25,6 @@ public class PlayerListener implements Listener {
 
 		String worldName = "world";
 		World world = plugin.getServer().getWorld(worldName);
-		Block block = null; 
 		Player player = event.getPlayer();
 		int count = 0;
 
@@ -36,19 +35,25 @@ public class PlayerListener implements Listener {
 		for(Chunk chunk : player.getWorld().getLoadedChunks()){
 			for(int x = 0; x < 16; x++) {                 //iterating through chunks
 				for(int z = 0; z < 16; z++) {  
-					block = chunk.getBlock(x,0,z);        //setting its biome via blocks
+					Block block = chunk.getBlock(x,0,z);        //setting its biome via blocks
 					block.setBiome(Biome.DESERT);  
+					Chunk chunkCoords = world.getChunkAt(block);  //get chunk from block from loaded chunks
+					int chunkx = chunkCoords.getX();
+					int chunkz = chunkCoords.getZ();
+					String coordSet = (chunkx + "," + chunkz);    //store set of coords as string
+					WaffleMarm.newChunks.add(coordSet);
+					count++;
+					WaffleMarm.oldChunks.add(coordSet);
+					if (event.getMessage().startsWith("/desert start")) {
+						player.sendMessage("This biome is now a desert. Good Luck.");
+						if(!(coordSet.contains(coordSet))){
+							player.sendMessage("Chunk Coordinates Enhanced: " + WaffleMarm.oldChunks);
+						}
+						event.setCancelled(true);
+					}
 				}
 			}
 		}
-		
-		Chunk chunkCoords = world.getChunkAt(block);  //get chunk from block from loaded chunks
-		int chunkx = chunkCoords.getX();
-		int chunkz = chunkCoords.getZ();
-		String coordSet = (chunkx + "," + chunkz);    //store set of coords as string
-		WaffleMarm.newChunks.add(coordSet);
-		count++;
-		WaffleMarm.oldChunks.add(coordSet);
 		
 		if(player.isOp()){
 			if (event.getMessage().startsWith("/desert changed")) {
@@ -58,13 +63,7 @@ public class PlayerListener implements Listener {
 				}
 				event.setCancelled(true);
 			}                                                                  
-			if (event.getMessage().startsWith("/desert start")) {
-				player.sendMessage("This biome is now a desert. Good Luck.");
-				if(!(coordSet.contains(coordSet))){
-					player.sendMessage("Chunk Coordinates Enhanced: " + WaffleMarm.oldChunks);
-				}
-				event.setCancelled(true);
-			}
+			
 		}
 	}
 }
