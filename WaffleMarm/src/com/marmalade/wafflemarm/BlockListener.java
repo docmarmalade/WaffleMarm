@@ -6,7 +6,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-	public final class BlockListener implements Listener {
+	public class BlockListener implements Listener {
 
 		final WaffleMarm plugin;
 		
