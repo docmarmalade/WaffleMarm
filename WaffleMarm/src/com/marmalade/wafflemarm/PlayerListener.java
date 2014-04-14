@@ -52,7 +52,7 @@ public final class PlayerListener implements Listener {
 							newChunks.add(coordSet);
 							count++;
 							newChunks.removeAll(oldChunks);
-							player.sendMessage("New Chunks Processed: " + (count/256));
+							player.sendMessage("New Chunks Processed: " + (count/65536));
 							event.setCancelled(true);
 						}
 
