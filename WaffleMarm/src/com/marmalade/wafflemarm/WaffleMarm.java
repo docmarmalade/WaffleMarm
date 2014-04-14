@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class WaffleMarm extends JavaPlugin {
 
-	public WaffleMarm plugin;
+	WaffleMarm plugin;
 	public final Logger log = Logger.getLogger("Minecraft");
 	PlayerListener playerListener = new PlayerListener(this);  
 	BlockListener blockListener = new BlockListener(this);

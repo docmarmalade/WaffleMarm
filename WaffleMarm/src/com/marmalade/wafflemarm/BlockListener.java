@@ -10,11 +10,11 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 		WaffleMarm plugin;
 		
-		public BlockListener(WaffleMarm instance) {
+		BlockListener(WaffleMarm instance) {
 			plugin = instance;
 		}
 
-		@EventHandler(priority = EventPriority.NORMAL)
+		@EventHandler(priority = EventPriority.LOWEST)
 		public void onBlockPlace(BlockPlaceEvent event) {
 			
 			Player player = event.getPlayer();
