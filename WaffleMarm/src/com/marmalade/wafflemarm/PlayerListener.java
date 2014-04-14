@@ -18,7 +18,7 @@ public class PlayerListener implements Listener {
 		plugin = instance;
 	}
 	
-	String worldName = new String("world");
+	String worldName = "world";
 	World world = plugin.getServer().getWorld(worldName);
 	
 	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {

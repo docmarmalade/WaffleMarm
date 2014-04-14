@@ -8,7 +8,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 	public class BlockListener implements Listener {
 
-		final WaffleMarm plugin;
+		WaffleMarm plugin;
 		
 		public BlockListener(WaffleMarm instance) {
 			plugin = instance;

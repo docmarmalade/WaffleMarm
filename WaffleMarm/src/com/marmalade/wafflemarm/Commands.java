@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 
 public class Commands implements CommandExecutor{
 
-	public WaffleMarm plugin; 
+	WaffleMarm plugin; 
 
 	public Commands(WaffleMarm plugin){
 		this.plugin = plugin;
