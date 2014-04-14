@@ -47,16 +47,14 @@ public class PlayerListener implements Listener {
 							WaffleMarm.newChunks.add(coordSet);
 							count++;
 							WaffleMarm.oldChunks.add(coordSet);
-							if(!(coordSet.contains(coordSet))){
-								player.sendMessage("Chunk Coordinates Enhanced: " + WaffleMarm.oldChunks);
-							}
-							else{
-								player.sendMessage("No Chunks Coordinates Enhanced.");
-							}
+							player.sendMessage("Chunk Coordinates Enhanced: " + WaffleMarm.oldChunks);
 							event.setCancelled(true);
 						}
 					}
 				}
+			}
+			else{
+				player.sendMessage("No Chunks Coordinates Enhanced.");
 			}
 			if (event.getMessage().startsWith("/desert changed")) {
 				if(!(WaffleMarm.newChunks.contains(WaffleMarm.oldChunks))){    //making sure there are no duplicates
