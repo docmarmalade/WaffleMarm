@@ -16,14 +16,14 @@ import com.marmalade.wafflemarm.WaffleMarm;
 public class PlayerListener implements Listener {
 
 	final WaffleMarm plugin;
-	private Location Block;
-
+	
 	public PlayerListener(WaffleMarm instance) {
 		plugin = instance;
 	}
 
-	public PlayerListener(PlayerCommandPreprocessEvent event) {
-
+	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
+		
+		Location Block;
 		Player player = event.getPlayer();
 
 		if (event.getMessage().startsWith("/bye")){
