@@ -20,7 +20,9 @@ public class PlayerListener implements Listener {
 	public PlayerListener(WaffleMarm instance) {
 		plugin = instance;
 	}
-
+	
+	String worldName = new String("world");
+	World world = plugin.getServer().getWorld(worldName);
 	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
 		
 		Location Block;
@@ -40,8 +42,6 @@ public class PlayerListener implements Listener {
 			}
 		}
 
-		String worldName = new String("world");
-		World world = plugin.getServer().getWorld(worldName);
 		int count = 0;
 		Chunk chunkCoords = world.getChunkAt(block);  //get chunk from block from loaded chunks
 		chunkx = chunkCoords.getX();
