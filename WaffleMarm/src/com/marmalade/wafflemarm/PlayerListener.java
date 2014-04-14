@@ -57,17 +57,16 @@ public class PlayerListener implements Listener {
 				player.sendMessage("No Chunks Coordinates Enhanced.");
 			}
 			if (event.getMessage().startsWith("/desert changed")) {
-				if(!(WaffleMarm.newChunks.contains(WaffleMarm.oldChunks))){    //making sure there are no duplicates
-					player.sendMessage("New Chunks Processed: " + (count/65536));   //(16*16*256)blocks in a chunk =65536 blocks, count uses for-loop that iterates through block so this translates block count into chunk count 
-				}
-				else{
-					player.sendMessage("No new chunks processed");
-				}
-				event.setCancelled(true);
+				player.sendMessage("New Chunks Processed: " + (count/65536));   //(16*16*256)blocks in a chunk =65536 blocks, count uses for-loop that iterates through block so this translates block count into chunk count 
 			}
+			else{
+				player.sendMessage("No new chunks processed");
+			}
+			event.setCancelled(true);
 		}
 	}
 }
+
 
 
 
