@@ -51,16 +51,17 @@ public final class PlayerListener implements Listener {
 						if (event.getMessage().startsWith("/desert changed")) {
 							newChunks.add(coordSet);
 							count++;
-							newChunks.removeAll(oldChunks);       //making sure there are no duplicates
-							player.sendMessage("New Chunks Processed: " + (count/65536));   //(16*16*256)blocks in a chunk =65536 blocks,
-							event.setCancelled(true);                                       //count uses for-loop that iterates through blocks
-						}                                                                   //so this translates block count into chunk count
-
+							if(!(newChunks.contains(oldChunks))){    //making sure there are no duplicates
+							player.sendMessage("New Chunks Processed: " + (count/65536));   //(16*16*256)blocks in a chunk =65536 blocks, count uses for-loop that iterates through block so this translates block count into chunk count 
+							}
+							event.setCancelled(true);
+						}                                                                  
 						if (event.getMessage().startsWith("/desert start")) {
 							player.sendMessage("This biome is now a desert. Good Luck.");
 							oldChunks.add(coordSet);
-							oldChunks.removeAll(newChunks);
+							if(!(oldChunks.contains(coordSet))){
 							player.sendMessage("Chunk Coordinates Enhanced: " + oldChunks);
+							}
 							event.setCancelled(true);
 						}
 					}
