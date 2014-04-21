@@ -30,40 +30,45 @@ public class PlayerListener implements Listener {
 			player.sendMessage("Goodbye");
 			event.setCancelled(true);
 		}
-
-		if(player.isOp()){
-			if (event.getMessage().startsWith("/desert start")) {
-				for(Chunk chunk : player.getWorld().getLoadedChunks()){
-					for(int x = 0; x < 16; x++) {                 //iterating through chunks
-						for(int z = 0; z < 16; z++) {  
-							Block block = chunk.getBlock(x,0,z);        //setting its biome via blocks
-							block.setBiome(Biome.DESERT);  
-							Chunk chunkCoords = world.getChunkAt(block);  //get chunk from processed block
-							int chunkx = chunkCoords.getX();              //get chunk location of said chunk
-							int chunkz = chunkCoords.getZ();
-							String cx = new Integer(chunkx).toString();
-							String cz = new Integer(chunkz).toString();
-							String coordSet = (cx + "," + cz);    //store set of coords as string
-							if(coordSet.equals(coordSet)){
-						    String cxz = coordSet.replaceAll((cx + "," + cz), coordSet);
+		for(Chunk chunk : player.getWorld().getLoadedChunks()){
+			for(int x = 0; x < 16; x++) {                 //iterating through chunks
+				for(int z = 0; z < 16; z++) {  
+					Block block = chunk.getBlock(x,0,z);        //setting its biome via blocks
+					block.setBiome(Biome.DESERT);  
+					Chunk chunkCoords = world.getChunkAt(block);  //get chunk from processed block
+					int chunkx = chunkCoords.getX();              //get chunk location of said chunk
+					int chunkz = chunkCoords.getZ();
+					String cx = new Integer(chunkx).toString();
+					String cz = new Integer(chunkz).toString();
+					String coordSet = (cx + "," + cz);    //store set of coords as string
+					if(WaffleMarm.oldChunks.isEmpty()){
+						if(coordSet.equals(coordSet)){
+							String cxz = coordSet.replaceAll((cx + "," + cz), coordSet);
 							WaffleMarm.oldChunks.add(cxz);	
 							WaffleMarm.newChunks.add(cxz);
 							count++;
-							}
-							WaffleMarm.newChunks.remove(WaffleMarm.oldChunks);
-							System.out.print("Chunk Coordinates Enhanced: " + WaffleMarm.oldChunks);
-							event.setCancelled(true);
-							}
 						}
 					}
 				}
 			}
-			if (event.getMessage().startsWith("/desert changed")) {
-				player.sendMessage("New Chunks Processed: " + (count/65536));   //(16*16*256)blocks in a chunk =65536 blocks, count uses for-loop that iterates through block so this translates block count into chunk count 
+
+			if(player.isOp()){
+				if (event.getMessage().startsWith("/desert start")) {
+					event.setCancelled(true);
+					player.sendMessage("Chunk Coordinates Enhanced: " + WaffleMarm.oldChunks);	
+					WaffleMarm.oldChunks.clear();
+				}
 			}
-			event.setCancelled(true);
+			
+			if (event.getMessage().startsWith("/desert changed")) {
+				event.setCancelled(true);
+				if(!(WaffleMarm.newChunks.contains(WaffleMarm.oldChunks))){
+					player.sendMessage("New Chunks Processed: " + (count/65536));   //(16*16*256)blocks in a chunk =65536 blocks, count uses for-loop that iterates through block so this translates block count into chunk count 
+				}
+			}
 		}
 	}
+}
 
 
 
