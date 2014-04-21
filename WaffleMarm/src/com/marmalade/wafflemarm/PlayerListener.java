@@ -10,8 +10,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
-import com.marmalade.wafflemarm.WaffleMarm;
-
 public class PlayerListener implements Listener {
 
 	WaffleMarm plugin;
@@ -40,32 +38,33 @@ public class PlayerListener implements Listener {
 						for(int z = 0; z < 16; z++) {  
 							Block block = chunk.getBlock(x,0,z);        //setting its biome via blocks
 							block.setBiome(Biome.DESERT);  
-							Chunk chunkCoords = world.getChunkAt(block);  //get chunk from block from loaded chunks
-							int chunkx = chunkCoords.getX();
+							Chunk chunkCoords = world.getChunkAt(block);  //get chunk from processed block
+							int chunkx = chunkCoords.getX();              //get chunk location of said chunk
 							int chunkz = chunkCoords.getZ();
-							String coordSet = (chunkx + "," + chunkz);    //store set of coords as string
-							WaffleMarm.newChunks.add(coordSet);
+							String cx = new Integer(chunkx).toString();
+							String cz = new Integer(chunkz).toString();
+							String coordSet = (cx + "," + cz);    //store set of coords as string
+							if(coordSet.equals(coordSet)){
+						    String cxz = coordSet.replaceAll((cx + "," + cz), coordSet);
+							WaffleMarm.oldChunks.add(cxz);	
+							WaffleMarm.newChunks.add(cxz);
 							count++;
-							WaffleMarm.oldChunks.add(coordSet);
-							player.sendMessage("Chunk Coordinates Enhanced: " + WaffleMarm.oldChunks);
+							}
+							WaffleMarm.newChunks.remove(WaffleMarm.oldChunks);
+							System.out.print("Chunk Coordinates Enhanced: " + WaffleMarm.oldChunks);
 							event.setCancelled(true);
+							}
 						}
 					}
 				}
 			}
-			else{
-				player.sendMessage("No Chunks Coordinates Enhanced.");
-			}
 			if (event.getMessage().startsWith("/desert changed")) {
 				player.sendMessage("New Chunks Processed: " + (count/65536));   //(16*16*256)blocks in a chunk =65536 blocks, count uses for-loop that iterates through block so this translates block count into chunk count 
-			}
-			else{
-				player.sendMessage("No new chunks processed");
 			}
 			event.setCancelled(true);
 		}
 	}
-}
+
 
 
 

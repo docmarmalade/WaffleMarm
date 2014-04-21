@@ -16,7 +16,7 @@ public class Commands implements CommandExecutor{
 		this.plugin = plugin;
 	} //end Commands
 
-	@Override 
+	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 
 		String displayName = sender.getName();
@@ -33,7 +33,6 @@ public class Commands implements CommandExecutor{
 		} 
 
 		if(cmd.getName().equalsIgnoreCase("jump")){
-
 			double x = player.getLocation().getX(); 
 			double y = player.getLocation().getY();
 			double z = player.getLocation().getZ();
@@ -43,8 +42,8 @@ public class Commands implements CommandExecutor{
 			player.teleport(location);
 			player.sendMessage(ChatColor.YELLOW + "What goes up...Must come down!");
 			return true;
-		}
-		return false;
+		}	
+			return false;
 	}
 }
 

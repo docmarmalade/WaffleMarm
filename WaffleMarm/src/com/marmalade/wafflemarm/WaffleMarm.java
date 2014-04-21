@@ -3,7 +3,7 @@ package com.marmalade.wafflemarm;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
-import com.marmalade.wafflemarm.PlayerListener;
+
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -33,8 +33,9 @@ public class WaffleMarm extends JavaPlugin {
 
 	public static Set<String> oldChunks = new HashSet<String>();   //2 hashsets for storing coord sets of chunks
 	public static Set<String> newChunks = new HashSet<String>();
-
 }
+
+
 
 
 
