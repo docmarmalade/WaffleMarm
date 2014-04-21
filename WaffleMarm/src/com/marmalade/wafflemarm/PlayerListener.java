@@ -29,7 +29,9 @@ public class PlayerListener implements Listener {
 		if (event.getMessage().startsWith("/bye")){
 			player.sendMessage("Goodbye");
 			event.setCancelled(true);
+			return;
 		}
+
 		for(Chunk chunk : player.getWorld().getLoadedChunks()){
 			for(int x = 0; x < 16; x++) {                 //iterating through chunks
 				for(int z = 0; z < 16; z++) {  
@@ -59,11 +61,11 @@ public class PlayerListener implements Listener {
 					WaffleMarm.oldChunks.clear();
 				}
 			}
-			
-			if (event.getMessage().startsWith("/desert changed")) {
+
+			if (event.getMessage().startsWith("/desert change")) {
 				event.setCancelled(true);
 				if(!(WaffleMarm.newChunks.contains(WaffleMarm.oldChunks))){
-					player.sendMessage("New Chunks Processed: " + (count/65536));   //(16*16*256)blocks in a chunk =65536 blocks, count uses for-loop that iterates through block so this translates block count into chunk count 
+					player.sendMessage("New Chunks Processed: " + (count));   //(16*16*256)blocks in a chunk =65536 blocks, count uses for-loop that iterates through block so this translates block count into chunk count
 				}
 			}
 		}
