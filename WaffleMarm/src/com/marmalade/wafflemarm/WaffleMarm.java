@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class WaffleMarm extends JavaPlugin {
 
-	WaffleMarm plugin;
+	static WaffleMarm plugin;
 	public final Logger log = Logger.getLogger("Minecraft");
 	PlayerListener playerListener = new PlayerListener(this);  
 	BlockListener blockListener = new BlockListener(this);
@@ -18,11 +18,20 @@ public class WaffleMarm extends JavaPlugin {
 		plugin = this;
 	}
 
+	public void LoadConfiguration(){
+		this.getConfig().options().copyDefaults(true);
+		this.saveConfig();
+	}
+	
 	@Override
 	public void onEnable(){
 		getLogger().info("It's Alive!!");
 		PluginManager pm = getServer().getPluginManager();
-
+		
+        LoadConfiguration();
+        System.out.print("WaffleMarm Plugin Enabled!");
+        this.reloadConfig();
+        
 		pm.registerEvents(playerListener, this);       //registers eventlisteners
 		pm.registerEvents(blockListener, this);
 
