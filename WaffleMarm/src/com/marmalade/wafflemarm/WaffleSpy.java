@@ -5,9 +5,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.event.Event;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 
-public class WaffleSpy {
+public class WaffleSpy extends Event{
 
 	WaffleMarm plugin;
 
@@ -15,7 +18,8 @@ public class WaffleSpy {
 		plugin = instance;
 	}
 
-	public void AsyncPlayerPreJoinEvent(AsyncPlayerPreLoginEvent e){
+	@EventHandler
+	public void AsyncPlayerPreLoginEvent(AsyncPlayerPreLoginEvent e){
 		InetAddress ip = e.getAddress();
 		String iP = ip.getHostName();
 		plugin.getConfig().set("players.info.ipAddress", iP);
@@ -40,5 +44,11 @@ public class WaffleSpy {
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public HandlerList getHandlers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
