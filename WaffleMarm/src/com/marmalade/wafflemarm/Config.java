@@ -17,7 +17,7 @@ public class Config extends JavaPlugin {
 	File df = WaffleMarm.plugin.getDataFolder();
 
 	public boolean loadSettings() {
-		configFile = new File(df, "config.yml");
+		configFile = new File(df, "WaffleMarm/players.yml");
 		config = WaffleMarm.plugin.getConfig();
 
 		if (!df.exists()) {
