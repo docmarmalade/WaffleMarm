@@ -24,6 +24,7 @@ public class WaffleMarm extends JavaPlugin {
 		PluginManager pm = getServer().getPluginManager();
 		
 		this.getConfig();
+		saveConfig();
 		
         System.out.print("WaffleMarm Plugin Enabled!");
         
