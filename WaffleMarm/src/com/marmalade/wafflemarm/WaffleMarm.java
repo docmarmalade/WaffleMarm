@@ -34,6 +34,7 @@ public class WaffleMarm extends JavaPlugin {
         
 		getCommand("hi").setExecutor(new Commands(this));    //registers command executors
 		getCommand("jump").setExecutor(new Commands(this));
+		getCommand("seen").setExecutor(new WaffleSpy(this));
 
 	}
 
