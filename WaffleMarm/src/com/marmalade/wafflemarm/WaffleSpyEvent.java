@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.text.SimpleDateFormat;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.event.EventHandler;
@@ -29,7 +30,10 @@ public class WaffleSpyEvent implements Listener{
 		OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(playerName);
 		long fp = offlinePlayer.getFirstPlayed();
 		long lp = offlinePlayer.getLastPlayed();
-		File waffleInfo = new File("players.yml");
+		SimpleDateFormat dateStamp = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
+		String dateFirst = dateStamp.format(fp);
+		String dateLast = dateStamp.format(lp);
+		File waffleInfo = new File("WaffleMarm\'players.yml");
 		try {
 			waffleInfo.createNewFile();
 			System.out.println("checkpoint a");
@@ -42,7 +46,7 @@ public class WaffleSpyEvent implements Listener{
 				BufferedWriter writer = new BufferedWriter(new FileWriter(waffleInfo));
 				writer.write("Username: " + playerName + ", " + "IP: " + iP);
 				writer.newLine();
-				writer.write("First Login: " + fp + ", " + "Last Login: " + lp);
+				writer.write("First Login: " + dateFirst + ", " + "Last Login: " + dateLast);
 				writer.newLine();
 				System.out.println("checkpoint c");
 				writer.flush();
