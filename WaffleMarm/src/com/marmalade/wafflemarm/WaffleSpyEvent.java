@@ -7,9 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.text.SimpleDateFormat;
+import java.util.UUID;
+
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -34,7 +34,7 @@ public class WaffleSpyEvent implements Listener{
 		SimpleDateFormat dateStamp = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
 		String dateFirst = dateStamp.format(fp);
 		String dateLast = dateStamp.format(lp);
-		String uuid = player.getUniqueId().toString();
+		UUID uuid = plugin.getServer().getPlayer(playerName).getUniqueId();
 			
 		File waffleInfo = new File("players.yml");
 		try {
