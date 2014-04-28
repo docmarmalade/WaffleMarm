@@ -9,6 +9,7 @@ import java.net.InetAddress;
 import java.text.SimpleDateFormat;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -24,7 +25,6 @@ public class WaffleSpyEvent implements Listener{
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void AsyncPlayerPreLoginEvent(AsyncPlayerPreLoginEvent e){
-		Player player = ((OfflinePlayer) e).getPlayer();
 		InetAddress ip = e.getAddress();
 		String iP = ip.getHostName();
 		String playerName = e.getName();
