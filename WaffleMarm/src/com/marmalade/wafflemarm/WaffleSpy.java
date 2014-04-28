@@ -34,7 +34,7 @@ public class WaffleSpy implements CommandExecutor {
 		OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(playerName);
 		long fp = offlinePlayer.getFirstPlayed();
 		long lp = offlinePlayer.getLastPlayed();
-		File waffleInfo = new File("C:\\WaffleMarm\'players.yml");
+		File waffleInfo = new File("players.yml");
 		try {
 			waffleInfo.createNewFile();
 		} catch (IOException err) {
@@ -64,7 +64,7 @@ public class WaffleSpy implements CommandExecutor {
 			if(player.isOp()){
 				if (trimmedArgs.length == 1) {
 					sender.sendMessage(ChatColor.GOLD + "Player information for " + ChatColor.GREEN + trimmedArgs[0]);
-					File waffleInfo = new File("C:\\WaffleMarm\'players.yml");
+					File waffleInfo = new File("players.yml");
 					OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(trimmedArgs[0]);
 					long fp = offlinePlayer.getFirstPlayed();
 					try {
@@ -72,7 +72,7 @@ public class WaffleSpy implements CommandExecutor {
 							BufferedReader reader = new BufferedReader(new FileReader(waffleInfo));
 							String str = reader.readLine();
 							while(str != null){
-								sender.sendMessage(str);
+								sender.sendMessage(ChatColor.GOLD + str);
 							}
 							reader.close();
 						}	
