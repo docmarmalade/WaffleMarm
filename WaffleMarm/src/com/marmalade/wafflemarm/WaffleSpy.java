@@ -60,34 +60,33 @@ public class WaffleSpy implements CommandExecutor {
 		Player player = (Player) sender;
 		String commandName = command.getName().toLowerCase();
 		String[] trimmedArgs = args;
-		OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(trimmedArgs[0]);
-		long fp = offlinePlayer.getFirstPlayed();
-		File waffleInfo = new File("C:\\WaffleMarm\'players.yml");
-		try {
-			if(waffleInfo.exists()){
-				BufferedReader reader = new BufferedReader(new FileReader(waffleInfo));
-				String str = reader.readLine();
-				while(str != null){
-					sender.sendMessage(str);
-					reader.close();
-				}
-			}
-		} catch (FileNotFoundException e) {
-			if(fp == 0){
-				System.out.println("Player Does Not Exist!");
-			}
-			else{
-				System.out.println("File Not Found!");
-				e.printStackTrace();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		if (commandName.equalsIgnoreCase("seen " + trimmedArgs[0])) {
 			if(player.isOp()){
 				if (trimmedArgs.length == 1) {
 					sender.sendMessage(ChatColor.GOLD + "Player information for " + ChatColor.GREEN + trimmedArgs[0]);
-
+					File waffleInfo = new File("C:\\WaffleMarm\'players.yml");
+					OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(trimmedArgs[0]);
+					long fp = offlinePlayer.getFirstPlayed();
+					try {
+						if(waffleInfo.exists()){
+							BufferedReader reader = new BufferedReader(new FileReader(waffleInfo));
+							String str = reader.readLine();
+							while(str != null){
+								sender.sendMessage(str);
+							}
+							reader.close();
+						}	
+					} catch (FileNotFoundException e) {
+						if(fp == 0){
+							System.out.println("Player Does Not Exist!");
+						}
+						else{
+							System.out.println("File Not Found!");
+							e.printStackTrace();
+						}
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}
