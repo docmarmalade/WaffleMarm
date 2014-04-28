@@ -20,7 +20,6 @@ public class WaffleSpyEvent implements Listener{
 	WaffleSpyEvent(WaffleMarm instance) {
 		plugin = instance;
 	}
-	static File df = WaffleMarm.plugin.getDataFolder();
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void AsyncPlayerPreLoginEvent(AsyncPlayerPreLoginEvent e){
