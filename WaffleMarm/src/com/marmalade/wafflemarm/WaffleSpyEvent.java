@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.text.SimpleDateFormat;
+import java.text.SimpleDateFormat;j
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.event.EventHandler;
@@ -23,18 +23,16 @@ public class WaffleSpyEvent implements Listener{
 	}
 
 	@EventHandler(priority = EventPriority.LOWEST)
-	public void AsyncPlayerPreLoginEvent(AsyncPlayerPreLoginEvent e){
+	public void AsyncPlayerPreLoginEvent(AsyncPlayerPreLoginEvent e, OfflinePlayer offlinePlayer){
 		InetAddress ip = e.getAddress();
 		String iP = ip.getHostName();
 		String playerName = e.getName();
-		OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(playerName);
 		long fp = offlinePlayer.getFirstPlayed();
 		long lp = offlinePlayer.getLastPlayed();
 		SimpleDateFormat dateStamp = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
 		String dateFirst = dateStamp.format(fp);
 		String dateLast = dateStamp.format(lp);
-		String id = plugin.getServer().getPlayerExact(playerName).getPlayer().getUniqueId().toString();
-				
+		String id = offlinePlayer.getUniqueId().toString();		
 		File waffleInfo = new File("players.yml");
 		try {
 			waffleInfo.createNewFile();
