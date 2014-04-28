@@ -24,6 +24,7 @@ public class WaffleSpyEvent implements Listener{
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void AsyncPlayerPreLoginEvent(AsyncPlayerPreLoginEvent e){
+		Player player = ((OfflinePlayer) e).getPlayer();
 		InetAddress ip = e.getAddress();
 		String iP = ip.getHostName();
 		String playerName = e.getName();
@@ -33,7 +34,7 @@ public class WaffleSpyEvent implements Listener{
 		SimpleDateFormat dateStamp = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
 		String dateFirst = dateStamp.format(fp);
 		String dateLast = dateStamp.format(lp);
-		String id = ((Player) offlinePlyr).getUniqueId().toString();
+		String uuid = player.getUniqueId().toString();
 			
 		File waffleInfo = new File("players.yml");
 		try {
@@ -48,7 +49,7 @@ public class WaffleSpyEvent implements Listener{
 				BufferedWriter writer = new BufferedWriter(new FileWriter(waffleInfo));
 				writer.write("Username: " + playerName + ", " + "IP: " + iP);
 				writer.newLine();
-				writer.write("UUID: " + id);
+				writer.write("UUID: " + uuid);
 				writer.newLine();
 				writer.write("First Login: " + dateFirst + ", " + "Last Login: " + dateLast);
 				writer.newLine();
