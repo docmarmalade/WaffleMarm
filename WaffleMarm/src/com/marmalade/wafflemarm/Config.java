@@ -13,13 +13,13 @@ public class Config extends JavaPlugin {
 
 	static YamlConfiguration myConfig;
 	public static File configFile;
-	private FileConfiguration config;
-	File df = WaffleMarm.plugin.getDataFolder();
+	private static FileConfiguration config;
+	static File df = WaffleMarm.plugin.getDataFolder();
 
-	public boolean loadSettings() {
-		configFile = new File(df, "WaffleMarm/players.yml");
-		config = WaffleMarm.plugin.getConfig();
-
+	public static boolean loadSettings() {
+		configFile = new File(df, "config.yml");
+	    config = WaffleMarm.plugin.getConfig();
+	    
 		if (!df.exists()) {
 			df.mkdirs();
 		}

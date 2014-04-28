@@ -5,7 +5,6 @@ import java.util.Set;
 import java.util.logging.Logger;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
 public class WaffleMarm extends JavaPlugin {
 
 	static WaffleMarm plugin;
@@ -20,22 +19,20 @@ public class WaffleMarm extends JavaPlugin {
    
 	@Override
 	public void onEnable(){
-		getLogger().info("It's Alive!!");
+		log.info("It's Alive!!");
 		PluginManager pm = getServer().getPluginManager();
 		
-		this.getConfig();
+		if (Config.loadSettings()) {
+			getCommand("hi").setExecutor(new Commands(this));    //registers command executors
+			getCommand("jump").setExecutor(new Commands(this));
+			getCommand("seen").setExecutor(new WaffleSpy(this));
+		    System.out.print("WaffleMarm Plugin Enabled!");
+		} 
 		saveConfig();
 		
-        System.out.print("WaffleMarm Plugin Enabled!");
-        
 		pm.registerEvents(playerListener, this);       //registers eventlisteners
 		pm.registerEvents(blockListener, this);
        
-        
-		getCommand("hi").setExecutor(new Commands(this));    //registers command executors
-		getCommand("jump").setExecutor(new Commands(this));
-		getCommand("seen").setExecutor(new WaffleSpy(this));
-
 	}
 
 	public static Set<String> oldChunks = new HashSet<String>();   //2 hashsets for storing coord sets of chunks
