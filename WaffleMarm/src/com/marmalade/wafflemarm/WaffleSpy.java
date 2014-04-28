@@ -37,18 +37,22 @@ public class WaffleSpy implements CommandExecutor {
 		File waffleInfo = new File("players.yml");
 		try {
 			waffleInfo.createNewFile();
+			System.out.println("checkpoint a");
 		} catch (IOException err) {
 			err.printStackTrace();
 		}
 		if(waffleInfo.exists()){
+			System.out.println("checkpoint b");
 			try {
 				BufferedWriter writer = new BufferedWriter(new FileWriter(waffleInfo));
 				writer.write("Username: " + playerName + ", " + "IP: " + iP);
 				writer.newLine();
 				writer.write("First Login: " + fp + ", " + "Last Login: " + lp);
 				writer.newLine();
+				System.out.println("checkpoint c");
 				writer.flush();
 				writer.close();
+				System.out.println("checkpoint d");
 			} catch (FileNotFoundException err) {
 				System.out.println("File Not Found. Good Luck!");
 			} catch (IOException err) {
@@ -75,12 +79,15 @@ public class WaffleSpy implements CommandExecutor {
 					long fp = offlinePlayer.getFirstPlayed();
 					try {
 						if(waffleInfo.exists()){
+							sender.sendMessage("checkpoint 5");
 							BufferedReader reader = new BufferedReader(new FileReader(waffleInfo));
 							String str = reader.readLine();
 							while(str != null){
 								sender.sendMessage("" + ChatColor.GOLD + str);
+								sender.sendMessage("checkpoint 6");
 							}
 							reader.close();
+							sender.sendMessage("checkpoint 7");
 						}	
 					} catch (FileNotFoundException e) {
 						if(fp == 0){
