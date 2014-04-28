@@ -17,17 +17,17 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 
-public class WaffleSpy implements CommandExecutor {
+public class WaffleSpyCommand implements CommandExecutor {
 
 	WaffleMarm plugin;
 
-	WaffleSpy(WaffleMarm instance) {
+	WaffleSpyCommand(WaffleMarm instance) {
 		plugin = instance;
 	}
 	static File df = WaffleMarm.plugin.getDataFolder();
 
 	@EventHandler(priority = EventPriority.LOWEST)
-	public void AsyncPlayerPreLoginEvent(AsyncPlayerPreLoginEvent e){
+	public void onPlayerLogin(AsyncPlayerPreLoginEvent e){
 		InetAddress ip = e.getAddress();
 		String iP = ip.getHostName();
 		String playerName = e.getName();
