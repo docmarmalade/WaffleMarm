@@ -13,7 +13,7 @@ public class WaffleMarm extends JavaPlugin {
 	PlayerListener playerListener = new PlayerListener(this);  
 	BlockListener blockListener = new BlockListener(this);
     WaffleSpyEvent waffleSpyEvent = new WaffleSpyEvent(this);
-	
+
 	public WaffleMarm() {
 		plugin = this;
 	}
@@ -22,7 +22,7 @@ public class WaffleMarm extends JavaPlugin {
 	public void onEnable(){
 		log.info("It's Alive!!");
 		PluginManager pm = getServer().getPluginManager();
-		
+
 		if (Config.loadSettings()) {
 			getCommand("hi").setExecutor(new Commands(this));    //registers command executors
 			getCommand("jump").setExecutor(new Commands(this));
@@ -30,7 +30,7 @@ public class WaffleMarm extends JavaPlugin {
 		    System.out.print("WaffleMarm Plugin Enabled!");
 		} 
 		saveConfig();
-		
+
 		pm.registerEvents(playerListener, this);       //registers eventlisteners
 		pm.registerEvents(blockListener, this);
 		pm.registerEvents(waffleSpyEvent,this);

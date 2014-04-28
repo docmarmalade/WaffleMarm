@@ -16,7 +16,7 @@ public class Config extends JavaPlugin {
 	private static FileConfiguration config;
 	static File df = WaffleMarm.plugin.getDataFolder();
 
-	public static boolean loadSettings() {
+	public static boolean loadSettings(){
 		configFile = new File(df, "config.yml");
 	    config = WaffleMarm.plugin.getConfig();
 	    
