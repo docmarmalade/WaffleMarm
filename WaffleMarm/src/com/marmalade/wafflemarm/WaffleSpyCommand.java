@@ -40,10 +40,8 @@ public class WaffleSpyCommand implements CommandExecutor {
 							sender.sendMessage("checkpoint 5");
 							BufferedReader reader = new BufferedReader(new FileReader(waffleInfo));
 							String str = reader.readLine();
-							while(str != null){
-								sender.sendMessage("" + ChatColor.GOLD + str);
-								sender.sendMessage("checkpoint 6");
-							}
+							sender.sendMessage("" + ChatColor.GOLD + str);
+							sender.sendMessage("checkpoint 6");
 							reader.close();
 							sender.sendMessage("checkpoint 7");
 						}	
