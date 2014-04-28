@@ -15,8 +15,7 @@ public class WaffleMarm extends JavaPlugin {
 	public WaffleMarm() {
 		plugin = this;
 	}
-
-   
+ 
 	@Override
 	public void onEnable(){
 		log.info("It's Alive!!");
@@ -32,7 +31,6 @@ public class WaffleMarm extends JavaPlugin {
 		
 		pm.registerEvents(playerListener, this);       //registers eventlisteners
 		pm.registerEvents(blockListener, this);
-       
 	}
 
 	public static Set<String> oldChunks = new HashSet<String>();   //2 hashsets for storing coord sets of chunks

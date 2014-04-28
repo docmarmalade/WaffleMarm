@@ -6,26 +6,25 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-	public class BlockListener implements Listener {
+public class BlockListener implements Listener {
 
-		WaffleMarm plugin;
-		
-		BlockListener(WaffleMarm instance) {
-			plugin = instance;
-		}
+	WaffleMarm plugin;
 
-		@EventHandler(priority = EventPriority.LOWEST)
-		public void onBlockPlace(BlockPlaceEvent event) {
-			
-			Player player = event.getPlayer();
-			
-			event.setCancelled(true);
-				player.setHealth(0.0);   //kills player when block is placed
-				player.sendMessage("Hahaha you fool."); 
-			}
+	BlockListener(WaffleMarm instance) {
+		plugin = instance;
+	}
 
-		}
-	
+	@EventHandler(priority = EventPriority.LOWEST)
+	public void onBlockPlace(BlockPlaceEvent event) {
+
+		Player player = event.getPlayer();
+
+		event.setCancelled(true);
+		player.setHealth(0.0);   //kills player when block is placed
+		player.sendMessage("Hahaha you fool."); 
+	}
+}
+
 
 
 

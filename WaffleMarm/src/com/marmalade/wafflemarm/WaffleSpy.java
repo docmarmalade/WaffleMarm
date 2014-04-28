@@ -46,6 +46,7 @@ public class WaffleSpy implements CommandExecutor {
 				writer.write("Username: " + playerName + ", " + "IP: " + iP);
 				writer.newLine();
 				writer.write("First Login: " + fp + ", " + "Last Login: " + lp);
+				writer.newLine();
 				writer.flush();
 				writer.close();
 			} catch (FileNotFoundException err) {
@@ -56,15 +57,20 @@ public class WaffleSpy implements CommandExecutor {
 		}
 	}
 
+	@Override
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
 		Player player = (Player) sender;
 		String commandName = command.getName().toLowerCase();
 		String[] trimmedArgs = args;
-		if (commandName.equalsIgnoreCase("seen " + trimmedArgs[0])) {
+		if (commandName.equalsIgnoreCase("seen")) {
+			sender.sendMessage("checkpoint 1");
 			if(player.isOp()){
+				sender.sendMessage("checkpoint 2");
 				if (trimmedArgs.length == 1) {
+					sender.sendMessage("checkpoint 3");
 					sender.sendMessage(ChatColor.GOLD + "Player information for " + ChatColor.GREEN + trimmedArgs[0]);
 					File waffleInfo = new File("players.yml");
+					sender.sendMessage("checkpoint 4");
 					OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(trimmedArgs[0]);
 					long fp = offlinePlayer.getFirstPlayed();
 					try {
@@ -72,7 +78,7 @@ public class WaffleSpy implements CommandExecutor {
 							BufferedReader reader = new BufferedReader(new FileReader(waffleInfo));
 							String str = reader.readLine();
 							while(str != null){
-								sender.sendMessage(ChatColor.GOLD + str);
+								sender.sendMessage("" + ChatColor.GOLD + str);
 							}
 							reader.close();
 						}	
@@ -89,7 +95,8 @@ public class WaffleSpy implements CommandExecutor {
 					}
 				}
 			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 }
