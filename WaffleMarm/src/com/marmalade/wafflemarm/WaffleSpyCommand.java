@@ -25,25 +25,18 @@ public class WaffleSpyCommand implements CommandExecutor {
 		String commandName = command.getName().toLowerCase();
 		String[] trimmedArgs = args;
 		if (commandName.equalsIgnoreCase("seen")) {
-			sender.sendMessage("checkpoint 1");
 			if(player.isOp()){
-				sender.sendMessage("checkpoint 2");
 				if (trimmedArgs.length == 1) {
-					sender.sendMessage("checkpoint 3");
 					sender.sendMessage(ChatColor.GOLD + "Player information for " + ChatColor.GREEN + trimmedArgs[0]);
 					File waffleInfo = new File("players.yml");
-					sender.sendMessage("checkpoint 4");
 					OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(trimmedArgs[0]);
 					long fp = offlinePlayer.getFirstPlayed();
 					try {
 						if(waffleInfo.exists()){
-							sender.sendMessage("checkpoint 5");
 							BufferedReader reader = new BufferedReader(new FileReader(waffleInfo));
 							String str = reader.readLine();
 							sender.sendMessage("" + ChatColor.GOLD + str);
-							sender.sendMessage("checkpoint 6");
 							reader.close();
-							sender.sendMessage("checkpoint 7");
 						}	
 					} catch (FileNotFoundException e) {
 						if(fp == 0){
