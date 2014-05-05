@@ -28,12 +28,6 @@ public class WaffleSpyCommand implements CommandExecutor, Listener {
 	WaffleSpyCommand(WaffleMarm instance) {
 		plugin = instance;
 	}
-
-	public WaffleSpyCommand() {
-		// TODO Auto-generated constructor stub
-	}
-
-	WaffleSpyCommand SpyLogin = new WaffleSpyCommand();
 	
 	@EventHandler(priority = EventPriority.HIGHEST)             
 	public void onPlayerLogin(PlayerLoginEvent event){
