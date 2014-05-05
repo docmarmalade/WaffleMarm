@@ -6,6 +6,5 @@ commands:
     description: Displays "HI <player>!" 
   jump:
     description: Teleports the player +20 blocks on the y-axis.
-  seen:
-    description: Type '/seen <player>' to view players login info.
+
         
