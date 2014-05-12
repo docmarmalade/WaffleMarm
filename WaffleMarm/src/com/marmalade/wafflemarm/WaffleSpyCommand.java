@@ -28,7 +28,7 @@ public class WaffleSpyCommand implements CommandExecutor {
 		Player player = (Player) sender;
 		String commandName = command.getName();
 		String[] trimmedArgs = args;
-		OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(trimmedArgs[0]);
+		
 		System.out.println("1");
 		if (commandName.equalsIgnoreCase("seen")){
 			System.out.println("2");
@@ -36,13 +36,17 @@ public class WaffleSpyCommand implements CommandExecutor {
 				System.out.println("3");
 				if(trimmedArgs.length == 1){
 					System.out.println("4");
+					OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(trimmedArgs[0]);
 					sender.sendMessage(ChatColor.GOLD + "Player information for " + ChatColor.GREEN + trimmedArgs[0]);
 					File waffleInfo = new File ("plugins"+File.separator+"WaffleMarm"+File.separator+"players.yml");
 					if(waffleInfo.exists()){
 						System.out.println("5");
 						String UUID = ((Player) offlinePlayer).getUniqueId().toString(); 
+						System.out.println("6");
 						String info = this.getPlayerCard(UUID);
-						sender.sendMessage(info);	
+						System.out.println("7");
+						sender.sendMessage(info);
+						System.out.println("8");
 						return true;
 					}
 				}
