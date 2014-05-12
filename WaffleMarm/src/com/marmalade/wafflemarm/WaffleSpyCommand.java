@@ -19,9 +19,9 @@ public class WaffleSpyCommand implements CommandExecutor {
 
 	WaffleMarm plugin;
 
-	WaffleSpyCommand(WaffleMarm instance) {
-		plugin = instance;
-	}
+	public WaffleSpyCommand(WaffleMarm plugin){
+		this.plugin = plugin;
+	} 
 
 	private static FileConfiguration fileConfig = new YamlConfiguration();
 	private static File seenAttempts = new File ("plugins"+File.separator+"WaffleMarm"+File.separator+"seen_attempts.log");
