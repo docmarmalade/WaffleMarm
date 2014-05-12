@@ -30,7 +30,7 @@ public class WaffleSpyCommand implements CommandExecutor {
 		String[] trimmedArgs = args;
 		OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(trimmedArgs[0]);
 		System.out.println("1");
-		if (commandName.equalsIgnoreCase("seen" + trimmedArgs[0])){
+		if (commandName.equalsIgnoreCase("seen")){
 			System.out.println("2");
 			if(player.isOp()){
 				System.out.println("3");

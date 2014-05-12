@@ -17,7 +17,6 @@ public class WaffleMarm extends JavaPlugin {
 	PlayerListener playerListener = new PlayerListener(this);  
 	BlockListener blockListener = new BlockListener(this);
     WaffleSpyEvent waffleSpyEvent = new WaffleSpyEvent(this);
-    WaffleSpyCommand waffleSpyCommand = new WaffleSpyCommand(this);
     
 	public WaffleMarm() {
 		plugin = this;
@@ -51,7 +50,7 @@ public class WaffleMarm extends JavaPlugin {
 		
 		getCommand("hi").setExecutor(new Commands(this));    
 		getCommand("jump").setExecutor(new Commands(this));
-		getCommand("seen").setExecutor(new Commands(this));
+		getCommand("seen").setExecutor(new WaffleSpyCommand(this));
 	    System.out.print("WaffleMarm Plugin Enabled!");
 		
 	    Config.loadSettings();
