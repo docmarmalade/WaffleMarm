@@ -30,7 +30,6 @@ public class WaffleMarm extends JavaPlugin {
 	 public void loadYamls() {
 	        try {
 	            fileConfig.load(waffleInfo); 
-	            fileConfig.load(seenAttempts);
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
@@ -39,7 +38,6 @@ public class WaffleMarm extends JavaPlugin {
 	 public void saveYamls() {
 	        try {
 	            fileConfig.save(waffleInfo); //saves the FileConfiguration to its File
-	            fileConfig.save(seenAttempts);
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
