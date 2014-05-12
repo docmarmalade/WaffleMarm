@@ -49,13 +49,12 @@ public class WaffleMarm extends JavaPlugin {
 		log.info("It's Alive!!");
 		PluginManager pm = getServer().getPluginManager();
 		
-		//registers command executors
-		if (Config.loadSettings()) {
-			getCommand("hi").setExecutor(new Commands(this));    
-			getCommand("jump").setExecutor(new Commands(this));
-			getCommand("seen").setExecutor(new Commands(this));
-		    System.out.print("WaffleMarm Plugin Enabled!");
-		} 
+		getCommand("hi").setExecutor(new Commands(this));    
+		getCommand("jump").setExecutor(new Commands(this));
+		getCommand("seen").setExecutor(new Commands(this));
+	    System.out.print("WaffleMarm Plugin Enabled!");
+		
+	    Config.loadSettings();
 		loadYamls();
 		saveYamls();
 		saveConfig();

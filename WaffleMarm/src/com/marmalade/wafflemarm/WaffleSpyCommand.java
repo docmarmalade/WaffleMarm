@@ -23,29 +23,6 @@ public class WaffleSpyCommand implements CommandExecutor {
 		this.plugin = plugin;
 	} 
 
-	private static FileConfiguration fileConfig = new YamlConfiguration();
-	private static File seenAttempts = new File ("plugins"+File.separator+"WaffleMarm"+File.separator+"seen_attempts.log");
-
-	public String getPlayerCard(String UUID) {
-		FileConfiguration playersFile = WaffleSpyEvent.openPlayersFile();
-		String pName = playersFile.getString(UUID + ".name");
-		String pIp = playersFile.getString(UUID + ".ip");
-		String pUUID = playersFile.getString(UUID + ".uuid");
-		String pFirstDate = playersFile.getString(UUID + ".firstLogin");
-		String pLastDate = playersFile.getString(UUID + ".lastLogin");
-		String playerInfo = ("UUID: " + pUUID + "\nUsername: " + pName + "\nIP: " + pIp + "\nFirstLogin: " + pFirstDate + "\nLastLogin: " + pLastDate);
-		return playerInfo;
-	}
-
-	public String getAttempts(CommandSender sender, long time, boolean fileFound){
-		FileConfiguration seenFile = openSeenFile();
-		String cmdSender = seenFile.getString("seen." + sender + ".sender");
-		String cmdTime = seenFile.getString("seen." + time + ".time");
-		String cmdFound = seenFile.getString("seen." + fileFound + ".fileFound");
-		String cmdResult = ("CmdSender: " + cmdSender + "\nCmdTime: " + cmdTime + "\nFileResult: " + cmdFound);
-		return cmdResult;	
-	}
-
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
 		Player player = (Player) sender;
@@ -76,7 +53,30 @@ public class WaffleSpyCommand implements CommandExecutor {
 		}
 		return false;
 	}
+	
+	private static FileConfiguration fileConfig = new YamlConfiguration();
+	private static File seenAttempts = new File ("plugins"+File.separator+"WaffleMarm"+File.separator+"seen_attempts.log");
 
+	public String getPlayerCard(String UUID) {
+		FileConfiguration playersFile = WaffleSpyEvent.openPlayersFile();
+		String pName = playersFile.getString(UUID + ".name");
+		String pIp = playersFile.getString(UUID + ".ip");
+		String pUUID = playersFile.getString(UUID + ".uuid");
+		String pFirstDate = playersFile.getString(UUID + ".firstLogin");
+		String pLastDate = playersFile.getString(UUID + ".lastLogin");
+		String playerInfo = ("UUID: " + pUUID + "\nUsername: " + pName + "\nIP: " + pIp + "\nFirstLogin: " + pFirstDate + "\nLastLogin: " + pLastDate);
+		return playerInfo;
+	}
+
+	public String getAttempts(CommandSender sender, long time, boolean fileFound){
+		FileConfiguration seenFile = openSeenFile();
+		String cmdSender = seenFile.getString("seen." + sender + ".sender");
+		String cmdTime = seenFile.getString("seen." + time + ".time");
+		String cmdFound = seenFile.getString("seen." + fileFound + ".fileFound");
+		String cmdResult = ("CmdSender: " + cmdSender + "\nCmdTime: " + cmdTime + "\nFileResult: " + cmdFound);
+		return cmdResult;	
+	}
+	
 	static FileConfiguration openSeenFile() {
 		fileConfig = WaffleMarm.plugin.getConfig();
 
