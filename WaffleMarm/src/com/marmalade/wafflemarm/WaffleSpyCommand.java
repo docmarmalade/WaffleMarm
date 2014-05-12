@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -23,12 +22,12 @@ public class WaffleSpyCommand implements CommandExecutor {
 		this.plugin = plugin;
 	} 
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
 		Player player = (Player) sender;
 		String commandName = command.getName();
 		String[] trimmedArgs = args;
-		
 		System.out.println("1");
 		if (commandName.equalsIgnoreCase("seen")){
 			System.out.println("2");
@@ -36,17 +35,15 @@ public class WaffleSpyCommand implements CommandExecutor {
 				System.out.println("3");
 				if(trimmedArgs.length == 1){
 					System.out.println("4");
-					OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(trimmedArgs[0]);
+					OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(trimmedArgs[0]);
+					String UUID = offlinePlayer.getUniqueId().toString();
 					sender.sendMessage(ChatColor.GOLD + "Player information for " + ChatColor.GREEN + trimmedArgs[0]);
 					File waffleInfo = new File ("plugins"+File.separator+"WaffleMarm"+File.separator+"players.yml");
 					if(waffleInfo.exists()){
 						System.out.println("5");
-						String UUID = ((Player) offlinePlayer).getUniqueId().toString(); 
-						System.out.println("6");
 						String info = this.getPlayerCard(UUID);
-						System.out.println("7");
 						sender.sendMessage(info);
-						System.out.println("8");
+						System.out.println("6");
 						return true;
 					}
 				}
