@@ -37,7 +37,8 @@ public class WaffleMarm extends JavaPlugin {
 	 
 	 public void saveYamls() {
 	        try {
-	            fileConfig.save(waffleInfo); //saves the FileConfiguration to its File
+	        	//saves the FileConfiguration to its File
+	            fileConfig.save(waffleInfo); 
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
@@ -48,8 +49,9 @@ public class WaffleMarm extends JavaPlugin {
 		log.info("It's Alive!!");
 		PluginManager pm = getServer().getPluginManager();
 		
+		//registers command executors
 		if (Config.loadSettings()) {
-			getCommand("hi").setExecutor(new Commands(this));    //registers command executors
+			getCommand("hi").setExecutor(new Commands(this));    
 			getCommand("jump").setExecutor(new Commands(this));
 			getCommand("seen").setExecutor(new Commands(this));
 		    System.out.print("WaffleMarm Plugin Enabled!");
@@ -58,12 +60,14 @@ public class WaffleMarm extends JavaPlugin {
 		saveYamls();
 		saveConfig();
 
-		pm.registerEvents(playerListener, this);       //registers eventlisteners
+		//registers eventlisteners
+		pm.registerEvents(playerListener, this);       
 		pm.registerEvents(blockListener, this);
 		pm.registerEvents(waffleSpyEvent,this);
 	}
 
-	public static Set<String> oldChunks = new HashSet<String>();   //2 hashsets for storing coord sets of chunks
+	//2 hashsets for storing coord sets of chunks
+	public static Set<String> oldChunks = new HashSet<String>();   
 	public static Set<String> newChunks = new HashSet<String>();
 }
 
