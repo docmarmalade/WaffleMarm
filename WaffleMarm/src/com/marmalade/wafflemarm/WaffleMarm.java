@@ -9,7 +9,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import com.marmalade.wafflemarm.WaffleSpyCommand;
 
 public class WaffleMarm extends JavaPlugin {
 
@@ -17,18 +16,21 @@ public class WaffleMarm extends JavaPlugin {
 	public final Logger log = Logger.getLogger("Minecraft");
 	PlayerListener playerListener = new PlayerListener(this);  
 	BlockListener blockListener = new BlockListener(this);
+    WaffleSpyEvent waffleSpyEvent = new WaffleSpyEvent(this);
     WaffleSpyCommand waffleSpyCommand = new WaffleSpyCommand(this);
-
+    
 	public WaffleMarm() {
 		plugin = this;
 	}
 	
-	File waffleInfo;
+	File waffleInfo = new File ("plugins"+File.separator+"WaffleMarm"+File.separator+"players.yml");
+	File seenAttempts = new File ("plugins"+File.separator+"WaffleMarm"+File.separator+"seen_attempts.log");
 	FileConfiguration fileConfig = new YamlConfiguration();
 
 	 public void loadYamls() {
 	        try {
 	            fileConfig.load(waffleInfo); 
+	            fileConfig.load(seenAttempts);
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
@@ -37,6 +39,7 @@ public class WaffleMarm extends JavaPlugin {
 	 public void saveYamls() {
 	        try {
 	            fileConfig.save(waffleInfo); //saves the FileConfiguration to its File
+	            fileConfig.save(seenAttempts);
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
@@ -50,6 +53,7 @@ public class WaffleMarm extends JavaPlugin {
 		if (Config.loadSettings()) {
 			getCommand("hi").setExecutor(new Commands(this));    //registers command executors
 			getCommand("jump").setExecutor(new Commands(this));
+			getCommand("seen").setExecutor(new Commands(this));
 		    System.out.print("WaffleMarm Plugin Enabled!");
 		} 
 		loadYamls();
@@ -58,7 +62,7 @@ public class WaffleMarm extends JavaPlugin {
 
 		pm.registerEvents(playerListener, this);       //registers eventlisteners
 		pm.registerEvents(blockListener, this);
-		pm.registerEvents(waffleSpyCommand,this);
+		pm.registerEvents(waffleSpyEvent,this);
 	}
 
 	public static Set<String> oldChunks = new HashSet<String>();   //2 hashsets for storing coord sets of chunks
