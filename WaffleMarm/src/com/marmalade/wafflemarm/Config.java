@@ -19,7 +19,7 @@ public class Config extends JavaPlugin {
 	public static boolean loadSettings(){
 		configFile = new File(df, "config.yml");
 	    config = WaffleMarm.plugin.getConfig();
-	    
+	   
 		if (!df.exists()) {
 			df.mkdirs();
 		}
